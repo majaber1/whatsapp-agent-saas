@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_APP_NAME=WhatsApp Agent SaaS
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://whatsapp:whatsapp123@postgres:5432/whatsappdb
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-qwen2.5:7b-instruct}
+      - SECRET_KEY=${SECRET_KEY:-your-secret-key-change-in-production}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@demo.com}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-demo123}
+      - EVOLUTION_API_URL=${EVOLUTION_API_URL:-http://evolution-api:8080}
+      - EVOLUTION_API_KEY=${EVOLUTION_API_KEY:-your-evolution-api-key}
+      - BUSINESS_NAME=${BUSINESS_NAME:-My Business}
+      - BUSINESS_PHONE=${BUSINESS_PHONE:-+966500000000}
+    depends_on:
+      - postgres
+      - ollama
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=whatsappdb
+      - POSTGRES_USER=whatsapp
+      - POSTGRES_PASSWORD=whatsapp123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U whatsapp -d whatsappdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  # Evolution API - Optional (for real WhatsApp integration)
+  # Uncomment to enable real WhatsApp
+  # evolution-api:
+  #   image: atendai/evolution-api:latest
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - SERVER_URL=http://evolution-api:8080
+  #     - AUTHENTICATION_API_KEY=your-evolution-api-key
+  #     - DATABASE_ENABLED=true
+  #     - DATABASE_PROVIDER=postgresql
+  #     - DATABASE_CONNECTION_URI=postgresql://whatsapp:whatsapp123@postgres:5432/evolutiondb
+  #   depends_on:
+  #     - postgres
+  #   restart: unless-stopped
+
+volumes:
+  postgres_data:
+  ollama_data:
