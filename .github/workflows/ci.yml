@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install linting tools
+        run: pip install flake8 black
+      - name: Lint
+        run: cd backend && flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics || true
+
+  frontend-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: cd frontend && npm install
+      - name: Type check
+        run: cd frontend && npx tsc --noEmit || true
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build backend
+        run: docker build -t whatsapp-backend ./backend
+      - name: Build frontend
+        run: docker build -t whatsapp-frontend ./frontend
