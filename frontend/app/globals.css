@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f0f2f5;
+  color: #111827;
+}
+
+@layer utilities {
+  .whatsapp-bubble-out {
+    @apply bg-green-500 text-white rounded-2xl rounded-br-sm px-4 py-2 max-w-xs;
+  }
+  .whatsapp-bubble-in {
+    @apply bg-white text-gray-800 rounded-2xl rounded-bl-sm px-4 py-2 max-w-xs shadow-sm;
+  }
+}
