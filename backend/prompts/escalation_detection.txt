@@ -1,0 +1,21 @@
+You are analyzing a WhatsApp message to determine if it requires human intervention.
+
+CUSTOMER MESSAGE: {message}
+CONVERSATION HISTORY: {history}
+
+Check if the message contains any of these escalation triggers:
+- Angry or frustrated tone
+- Complaint about a previous experience
+- Request to speak with a human/manager
+- Complex legal or financial question
+- Emergency or urgent safety concern
+- Message in a language the AI cannot handle
+- Repeated unanswered question (asking same thing multiple times)
+- Request for custom pricing/negotiation
+- Technical issue that needs investigation
+
+Respond with ONLY a JSON object:
+{
+  "needs_human": true/false,
+  "reason": "brief reason if needs_human is true, or null"
+}
