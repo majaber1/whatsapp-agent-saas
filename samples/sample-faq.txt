@@ -1,0 +1,39 @@
+SAMPLE FAQ FOR EVENT RENTAL BUSINESS
+Business: Al-Noor Event Rentals
+Loaded via: POST /knowledge/seed
+
+Q: What are your working hours?
+A: We are open Saturday to Thursday, 9:00 AM to 9:00 PM. We are closed on Fridays.
+
+Q: What is the minimum rental period?
+A: Our minimum rental period is 4 hours for most equipment. Full-day rentals (12 hours) are also available.
+
+Q: Do you offer delivery?
+A: Yes! We offer delivery and pickup within Riyadh. Delivery fee starts at SAR 100 depending on location and equipment size.
+
+Q: How do I book?
+A: You can book through WhatsApp by sending us your event date, location, and the items you need. We'll confirm availability and send you a quote.
+
+Q: What is your cancellation policy?
+A: Free cancellation up to 48 hours before your event. 50% charge for cancellations within 24-48 hours. No refund for same-day cancellations.
+
+Q: Do you have tents available?
+A: Yes, we have various tent sizes: 5x5m, 10x10m, and 20x10m. Prices start from SAR 800 per day.
+
+Q: What tables and chairs do you have?
+A: We have round tables (seats 8), rectangular tables (seats 10), and white plastic chairs or banquet chairs. Packages available.
+
+Q: Do you provide a setup service?
+A: Yes, our team can set up and breakdown all equipment. Setup service costs SAR 200 extra.
+
+Q: What payment methods do you accept?
+A: We accept bank transfer (STCPay, bank transfer), and cash on delivery. 50% deposit required for bookings.
+
+Q: Do you have LED lighting?
+A: Yes! We have fairy lights, LED strips, uplighting, and chandeliers. Lighting packages start at SAR 300.
+
+Q: Can you handle a 500-person wedding?
+A: Absolutely! We specialize in large events. Contact us with your requirements and we'll create a custom package for you.
+
+Q: What areas do you serve?
+A: We primarily serve Riyadh and surrounding areas. For events outside Riyadh, additional transportation fees apply.
