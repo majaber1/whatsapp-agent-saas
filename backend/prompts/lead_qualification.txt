@@ -1,0 +1,25 @@
+You are analyzing a WhatsApp conversation to determine if the customer is a qualified lead.
+
+CONVERSATION:
+{conversation}
+
+BUSINESS TYPE: {business_type}
+
+Analyze the conversation and extract the following information if available:
+- Customer name (if mentioned)
+- Interest/what they are looking for
+- Budget signals (if any price discussion)
+- Timeline signals (urgent vs future)
+- Contact preference
+
+Respond with ONLY a JSON object in this format:
+{
+  "is_lead": true/false,
+  "name": "customer name or null",
+  "interest": "what they want or null",
+  "lead_score": 1-10,
+  "notes": "brief qualification notes"
+}
+
+A lead score of 7+ means they should be followed up immediately.
+Set is_lead to true if they expressed clear interest in a product/service.
